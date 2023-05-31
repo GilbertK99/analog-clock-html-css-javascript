@@ -1,11 +1,12 @@
 # Use the Nginx base image
-FROM nginx
+FROM ubuntu:latest
 
-# Remove the default Nginx configuration file
-RUN rm /etc/nginx/conf.d/default.conf
+RUN apt-get update
+
+RUN apt-get install nginx -y
 
 # Copy your website files into the container
-COPY . /usr/share/nginx/html
+COPY . /var/www/html
 
 # Expose the default HTTP port
 EXPOSE 80
